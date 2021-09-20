@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Un Granito de Tierra, A.C. | <%= @page_title || "Agroecología y Permacultura" %></title>
+    <meta name="description" content="Centro educativo y demostrativo para la vida sustentable en Xochitepec, Morelos." />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_pack_tag 'application', media: 'all' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= render partial: 'partials/header', locals: { header_class: @header_class } %>
+    <%= yield %>
+    <%= render partial: 'partials/footer' %>
+  </body>
+</html>
