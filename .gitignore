@@ -44,8 +44,24 @@ bower_components
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
 
+# Build directory
+/dist
+
+# Environment variables
+.env
+.env.production
+
 # Dependency directories
 node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Generated types
+.astro/
 
 # Optional npm cache directory
 .npm

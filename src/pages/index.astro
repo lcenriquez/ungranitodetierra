@@ -1,0 +1,193 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Inicio">
+  <!-- Hero Section -->
+  <section class="relative h-[90vh] mb-4 overflow-hidden">
+    <img 
+      src="/images/banner.jpeg"
+      alt="Naturaleza y agricultura"
+      class="absolute inset-0 w-full h-full object-cover"
+    />
+    <div class="absolute inset-0 bg-brand-brown/50"></div>
+    <div class="relative container mx-auto px-4 h-full flex items-center">
+      <div class="max-w-2xl">
+        <h1 class="text-5xl font-light mb-6 text-white">Cultivando un futuro sostenible</h1>
+        <p class="text-xl font-light text-white">
+          En armonía con la naturaleza, construyendo comunidades resilientes.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nuestro Motivo Section -->
+  <section class="container mx-auto px-4 py-16 mb-16">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-light text-brand-green text-center mb-16">Nuestro motivo</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-lg shadow-soft">
+          <div class="flex items-center mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-brand-brown mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4" />
+            </svg>
+            <h3 class="text-xl font-medium text-brand-brown">Misión</h3>
+          </div>
+          <p class="text-brand-brown">
+            Reconciliar a las personas con la tierra a través de una forma de vida sana, armoniosa y sustentable.
+          </p>
+        </div>
+
+        <div class="bg-white p-8 rounded-lg shadow-soft">
+          <div class="flex items-center mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-brand-brown mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+            </svg>
+            <h3 class="text-xl font-medium text-brand-brown">Enfoque</h3>
+          </div>
+          <p class="text-brand-brown">
+            Buscamos satisfacer las necesidades humanas utilizando técnicas ecológica y económicamente viables.
+          </p>
+        </div>
+
+        <div class="bg-white p-8 rounded-lg shadow-soft">
+          <div class="flex items-center mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-brand-brown mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064" />
+            </svg>
+            <h3 class="text-xl font-medium text-brand-brown">Áreas de trabajo</h3>
+          </div>
+          <ul class="space-y-3 text-brand-brown">
+            <li class="flex items-center">
+              <svg class="h-5 w-5 text-brand-green mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Producción de alimentos</span>
+            </li>
+            <li class="flex items-center">
+              <svg class="h-5 w-5 text-brand-green mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Construcción sustentable</span>
+            </li>
+            <li class="flex items-center">
+              <svg class="h-5 w-5 text-brand-green mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Energías renovables</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quiénes Somos Section -->
+  <section class="bg-pale-stone py-16 mb-16">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-light text-brand-green text-center mb-16">Quiénes somos</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="bg-white p-8 rounded-lg shadow-soft">
+            <div class="flex items-center mb-6">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-brand-brown mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <h3 class="text-xl font-medium text-brand-brown">Ubicación</h3>
+            </div>
+            <p class="text-brand-brown">Nos encontramos en el estado de Morelos, donde colaboramos activamente con proyectos, comunidades y espacios locales para promover un futuro más sostenible.</p>
+          </div>
+
+          <div class="bg-white p-8 rounded-lg shadow-soft">
+            <div class="flex items-center mb-6">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-brand-brown mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+              <h3 class="text-xl font-medium text-brand-brown">Equipo</h3>
+            </div>
+            <p class="text-brand-brown">Somos un grupo de jóvenes que trabajamos de la mano con la tierra para conservar la riqueza natural del estado de Morelos.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Técnicas y Principios Section -->
+  <section class="container mx-auto px-4 pb-16 mb-16">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-light text-brand-green text-center mb-16">Nuestras técnicas y principios</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-white p-8 rounded-lg shadow-soft">
+          <img 
+            src="/images/agroforesteria.jpg?auto=format&fit=crop&w=800&q=80"
+            alt="Agroforestería"
+            class="w-full h-48 object-cover rounded-lg mb-6"
+          />
+          <h3 class="text-xl font-medium text-brand-brown mb-4">Agroforestería</h3>
+          <p class="text-brand-brown">Combinamos agricultura y silvicultura, integrando árboles en sistemas agrícolas para mejorar la biodiversidad y reducir la erosión del suelo.</p>
+        </div>
+
+        <div class="bg-white p-8 rounded-lg shadow-soft">
+          <img 
+            src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=800&q=80"
+            alt="Agroecología"
+            class="w-full h-48 object-cover rounded-lg mb-6"
+          />
+          <h3 class="text-xl font-medium text-brand-brown mb-4">Agroecología</h3>
+          <p class="text-brand-brown">Desarrollamos sistemas agrícolas que imitan los ecosistemas naturales, maximizando el uso de recursos locales y fortaleciendo las comunidades.</p>
+        </div>
+
+        <div class="bg-white p-8 rounded-lg shadow-soft">
+          <img 
+            src="/images/permacultura.jpg?auto=format&fit=crop&w=800&q=80"
+            alt="Permacultura"
+            class="w-full h-48 object-cover rounded-lg mb-6"
+          />
+          <h3 class="text-xl font-medium text-brand-brown mb-4">Permacultura</h3>
+          <p class="text-brand-brown">Diseñamos sistemas sostenibles y productivos que imitan las relaciones naturales, promoviendo la autosuficiencia y el mínimo impacto ambiental.</p>
+        </div>
+
+        <div class="bg-white p-8 rounded-lg shadow-soft">
+          <img 
+            src="/images/ecotecnias.JPG?auto=format&fit=crop&w=800&q=80"
+            alt="Ecotecnias"
+            class="w-full h-48 object-cover rounded-lg mb-6"
+          />
+          <h3 class="text-xl font-medium text-brand-brown mb-4">Ecotecnias</h3>
+          <p class="text-brand-brown">Implementamos tecnologías ambientalmente amigables para el tratamiento de agua, manejo de residuos y energías renovables.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Súmate Section -->
+  <section class="bg-pale-stone py-16">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl font-light text-brand-green mb-8">Súmate a nuestra causa</h2>
+        <div class="flex justify-center gap-6">
+          <a 
+          href="/contacto" 
+          class="inline-flex items-center bg-white text-brand-brown px-8 py-4 rounded-lg hover:bg-pale-stone transition-colors border border-brand-brown"
+          >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+          Contáctanos
+        </a>
+        <a 
+          href="/dona" 
+          class="inline-flex items-center bg-brand-green text-white px-8 py-4 rounded-lg hover:bg-light-sage transition-colors"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          Dona
+        </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

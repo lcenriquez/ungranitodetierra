@@ -1,0 +1,111 @@
+---
+const navItems = [
+  { href: '/', text: 'Inicio' },
+  { href: '/productos-servicios', text: 'Productos y Servicios' },
+  { href: '/contacto', text: 'Contacto' },
+  { href: '/dona', text: 'Dona' },
+];
+---
+
+<nav class="bg-white border-b border-pale-stone py-4">
+  <div class="container mx-auto px-4">
+    <div class="flex justify-between items-center">
+      <a href="/" class="text-lg font-medium text-brand-brown">Un Granito de Tierra</a>
+      
+      <!-- Hamburger button -->
+      <button
+        id="menu-toggle"
+        class="md:hidden flex flex-col justify-center items-center w-10 h-10 space-y-1.5 cursor-pointer"
+        aria-label="Toggle menu"
+      >
+        <span class="w-6 h-0.5 bg-brand-brown transform transition duration-300 ease-in-out"></span>
+        <span class="w-6 h-0.5 bg-brand-brown transform transition duration-300 ease-in-out"></span>
+        <span class="w-6 h-0.5 bg-brand-brown transform transition duration-300 ease-in-out"></span>
+      </button>
+
+      <!-- Desktop menu -->
+      <div class="hidden md:flex gap-8">
+        {navItems.map(item => (
+          <a 
+            href={item.href} 
+            class="text-brand-brown hover:text-brand-green transition-colors font-medium text-sm"
+          >
+            {item.text}
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div
+      id="mobile-menu"
+      class="hidden md:hidden mt-4 transition-all duration-300 ease-in-out"
+    >
+      <div class="flex flex-col space-y-4 py-3">
+        {navItems.map(item => (
+          <a 
+            href={item.href} 
+            class="text-brand-brown hover:text-brand-green transition-colors mobile-menu-item font-medium"
+          >
+            {item.text}
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  function setupMobileMenu() {
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuItems = document.querySelectorAll('.mobile-menu-item');
+    const menuBars = menuToggle?.querySelectorAll('span');
+    let isOpen = false;
+
+    function toggleMenu() {
+      isOpen = !isOpen;
+      
+      // Toggle menu visibility
+      mobileMenu?.classList.toggle('hidden');
+      
+      // Animate hamburger icon
+      if (menuBars && menuBars.length === 3) {
+        if (isOpen) {
+          menuBars[0].classList.add('rotate-45', 'translate-y-2');
+          menuBars[1].classList.add('opacity-0');
+          menuBars[2].classList.add('-rotate-45', '-translate-y-2');
+        } else {
+          menuBars[0].classList.remove('rotate-45', 'translate-y-2');
+          menuBars[1].classList.remove('opacity-0');
+          menuBars[2].classList.remove('-rotate-45', '-translate-y-2');
+        }
+      }
+    }
+
+    // Toggle menu on button click
+    menuToggle?.addEventListener('click', toggleMenu);
+
+    // Close menu when clicking a menu item
+    menuItems.forEach(item => {
+      item.addEventListener('click', () => {
+        if (isOpen) {
+          toggleMenu();
+        }
+      });
+    });
+
+    // Close menu on window resize if open
+    window.addEventListener('resize', () => {
+      if (isOpen && window.innerWidth >= 768) {
+        toggleMenu();
+      }
+    });
+  }
+
+  // Initialize menu functionality
+  setupMobileMenu();
+
+  // Re-initialize when navigating between pages
+  document.addEventListener('astro:after-swap', setupMobileMenu);
+</script>
