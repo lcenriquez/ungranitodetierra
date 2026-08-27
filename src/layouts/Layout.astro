@@ -4,26 +4,124 @@ import Footer from '../components/Footer.astro';
 
 interface Props {
   title: string;
+  description: string;
+  image?: string;
+  type?: 'website' | 'article';
+  noindex?: boolean;
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
 }
 
-const { title } = Astro.props;
+const {
+  title,
+  description,
+  image = '/images/banner.jpeg',
+  type = 'website',
+  noindex = false,
+  structuredData,
+} = Astro.props;
+
+const siteName = 'Un Granito de Tierra, A.C.';
+const fullTitle = `${title} | ${siteName}`;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL(image, Astro.site);
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'NGO',
+  '@id': `${Astro.site}#organization`,
+  name: siteName,
+  alternateName: 'Un Granito de Tierra',
+  url: Astro.site,
+  logo: new URL('/assets/icons/ugt.png', Astro.site).toString(),
+  image: new URL('/images/banner.jpeg', Astro.site).toString(),
+  description:
+    'Organización de la sociedad civil dedicada a la agroecología, permacultura, agroforestería y arboricultura en el centro de México.',
+  slogan: 'Por un futuro más verde',
+  areaServed: [
+    {
+      '@type': 'City',
+      name: 'Cuernavaca',
+      containedInPlace: { '@type': 'State', name: 'Morelos' },
+    },
+    { '@type': 'State', name: 'Morelos' },
+    {
+      '@type': 'City',
+      name: 'Atlixco',
+      containedInPlace: { '@type': 'State', name: 'Puebla' },
+    },
+    { '@type': 'State', name: 'Puebla' },
+  ],
+  sameAs: ['https://www.facebook.com/ungranitodetierra'],
+  contactPoint: [
+    {
+      '@type': 'ContactPoint',
+      contactType: 'atención al público',
+      url: 'https://m.me/ungranitodetierra',
+      areaServed: ['MX'],
+      availableLanguage: ['es'],
+    },
+  ],
+};
+
+const jsonLdBlocks = [
+  organizationSchema,
+  ...(structuredData
+    ? Array.isArray(structuredData)
+      ? structuredData
+      : [structuredData]
+    : []),
+];
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="es-MX">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/assets/icons/ugt.png" />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO primario -->
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <meta name="theme-color" content="#809b75" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:locale" content="es_MX" />
+    <meta property="og:site_name" content={siteName} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <title>{title} - Un Granito de Tierra</title>
+
+    {jsonLdBlocks.map((block) => (
+      <script type="application/ld+json" set:html={JSON.stringify(block)} />
+    ))}
   </head>
   <body class="flex flex-col min-h-screen bg-soft-cream text-brand-brown">
+    <a
+      href="#contenido"
+      class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:top-4 focus:left-4 focus:bg-white focus:text-brand-brown focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-soft"
+    >
+      Saltar al contenido
+    </a>
     <Navigation />
-    <main class="flex-grow">
+    <main id="contenido" class="flex-grow">
       <slot />
     </main>
     <Footer />

@@ -1,11 +1,17 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
 ---
 
-<Layout title="Alianzas">
+<Layout
+  title="Alianzas"
+  description="Conoce las organizaciones aliadas de Un Granito de Tierra en proyectos ambientales de Morelos y Puebla."
+  noindex={true}
+>
   <div class="container mx-auto px-4 py-16">
     <div class="max-w-4xl mx-auto">
-      <h1 class="text-4xl font-light text-brand-green text-center mb-8">Nuestras alianzas</h1>
+      <Breadcrumbs items={[{ name: 'Inicio', href: '/' }, { name: 'Alianzas' }]} />
+      <h1 class="text-4xl font-light text-brand-green text-center mt-8 mb-8">Nuestras alianzas</h1>
       <p class="text-xl text-brand-brown text-center mb-16">
         Colaboramos con diversas organizaciones que comparten nuestra visión y están activamente trabajando a favor del planeta
       </p>
