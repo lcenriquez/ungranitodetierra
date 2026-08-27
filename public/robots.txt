@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ungranitodetierra.antilabs.com.mx/sitemap-index.xml

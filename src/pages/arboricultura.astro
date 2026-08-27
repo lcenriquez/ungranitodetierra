@@ -1,27 +1,140 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+const faqs = [
+  {
+    question: '¿En qué zonas ofrecen servicios de arboricultura?',
+    answer:
+      'Atendemos principalmente Cuernavaca, Morelos y Atlixco, Puebla, así como comunidades cercanas a ambas ciudades. Contáctanos para confirmar cobertura en tu localidad.',
+  },
+  {
+    question: '¿Qué incluye un servicio de poda profesional?',
+    answer:
+      'Incluye una evaluación previa del árbol, poda técnica que respeta su estructura natural, retiro de ramas secas o de riesgo, y recomendaciones de seguimiento para su salud a largo plazo.',
+  },
+  {
+    question: '¿Cómo sé si mi árbol necesita atención de un arborista?',
+    answer:
+      'Señales como ramas secas, grietas en el tronco, hongos, inclinación repentina, pérdida de hojas fuera de temporada o raíces expuestas indican que conviene solicitar un diagnóstico fitosanitario.',
+  },
+  {
+    question: '¿Trabajan con particulares, empresas y gobiernos locales?',
+    answer:
+      'Sí. Brindamos servicio a hogares, desarrollos residenciales, empresas y espacios públicos que requieran manejo responsable de su arbolado urbano.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+};
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Arboricultura y manejo de arbolado urbano',
+  provider: { '@id': `${Astro.site}#organization` },
+  areaServed: [
+    { '@type': 'City', name: 'Cuernavaca, Morelos' },
+    { '@type': 'City', name: 'Atlixco, Puebla' },
+  ],
+  description:
+    'Poda profesional, diagnóstico fitosanitario, tratamiento de plagas y enfermedades, y asesoría de arbolado urbano en Cuernavaca, Morelos y Atlixco, Puebla.',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Servicios de arboricultura',
+    itemListElement: [
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Poda profesional' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Diagnóstico fitosanitario' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Tratamiento de plagas y enfermedades' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Asesoría de arbolado urbano' } },
+    ],
+  },
+};
 ---
 
-<Layout title="Arboricultura">
+<Layout
+  title="Arboricultura en Cuernavaca, Morelos y Atlixco, Puebla"
+  description="Servicios profesionales de arboricultura en Cuernavaca, Morelos y Atlixco, Puebla: poda técnica, diagnóstico fitosanitario, tratamiento de plagas y asesoría de arbolado urbano."
+  image="/images/arboricultura-1.JPG"
+  structuredData={[faqSchema, serviceSchema]}
+>
   <div class="container mx-auto px-4 py-16">
     <div class="max-w-4xl mx-auto">
-      <h1 class="text-4xl font-light text-brand-green text-center mb-8">Arboricultura</h1>
+      <Breadcrumbs items={[{ name: 'Inicio', href: '/' }, { name: 'Arboricultura' }]} />
+
+      <h1 class="text-4xl font-light text-brand-green text-center mt-8 mb-4">
+        Arboricultura en Cuernavaca, Morelos y Atlixco, Puebla
+      </h1>
       <p class="text-xl text-brand-brown text-center mb-16 font-light">
-        Manejo y cuidado integral de árboles en espacios urbanos y rurales.
+        Manejo y cuidado integral de árboles en espacios urbanos y rurales, con equipo local en Morelos y Puebla.
       </p>
 
       <div class="grid md:grid-cols-2 gap-10 mb-16">
-        <img 
-          src="/images/arboricultura-1.JPG?auto=format&fit=crop&w=800&q=80"
-          alt="Árbol saludable"
+        <img
+          src="/images/arboricultura-1.JPG"
+          alt="Poda técnica de árbol saludable en Morelos"
           class="rounded-lg shadow-soft h-80 w-full object-cover"
+          loading="eager"
+          width="800"
+          height="320"
         />
-        <img 
-          src="/images/arboricultura-5.JPG?auto=format&fit=crop&w=800&q=80"
-          alt="Árbol urbano"
+        <img
+          src="/images/arboricultura-5.JPG"
+          alt="Arbolado urbano atendido por Un Granito de Tierra"
           class="rounded-lg shadow-soft h-80 w-full object-cover"
+          loading="eager"
+          width="800"
+          height="320"
         />
       </div>
+
+      <!-- Zonas de cobertura -->
+      <section class="bg-white p-10 rounded-lg shadow-soft mb-16" aria-labelledby="zonas-cobertura">
+        <h2 id="zonas-cobertura" class="text-2xl font-light text-brand-green mb-8 text-center">
+          Zonas donde ofrecemos el servicio
+        </h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="flex items-start gap-4 bg-soft-cream p-6 rounded-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-brand-green flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <div>
+              <h3 class="text-xl font-medium text-brand-brown mb-2">Cuernavaca, Morelos</h3>
+              <p class="text-brand-brown">
+                Atendemos particulares, empresas y espacios públicos en Cuernavaca y comunidades cercanas del estado de Morelos.
+              </p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4 bg-soft-cream p-6 rounded-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-brand-green flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <div>
+              <h3 class="text-xl font-medium text-brand-brown mb-2">Atlixco, Puebla</h3>
+              <p class="text-brand-brown">
+                También damos seguimiento a proyectos de arbolado urbano y rural en Atlixco y sus alrededores, en el estado de Puebla.
+              </p>
+            </div>
+          </div>
+        </div>
+        <p class="text-center text-brand-brown mt-8">
+          ¿Tu ubicación no aparece aquí?
+          <a href="/contacto" class="text-brand-green underline hover:text-light-sage">Escríbenos</a>
+          y con gusto revisamos la cobertura para tu proyecto.
+        </p>
+      </section>
 
       <section class="bg-white p-10 rounded-lg shadow-soft mb-16">
         <h2 class="text-2xl font-light text-brand-green mb-6">¿Qué es la arboricultura?</h2>
@@ -33,10 +146,13 @@ import Layout from '../layouts/Layout.astro';
       <section class="bg-white p-10 rounded-lg shadow-soft mb-16">
         <h2 class="text-2xl font-light text-brand-green mb-6">Desarrollo y estructura de los árboles</h2>
         <div class="flex flex-col md:flex-row items-start md:items-center gap-8 mb-6">
-          <img 
-            src="/images/arboricultura-3.JPG?auto=format&fit=crop&w=200&q=80"
+          <img
+            src="/images/arboricultura-3.JPG"
             alt="Estructura de un árbol"
             class="w-full md:w-1/4 h-48 md:h-32 object-cover rounded-lg"
+            loading="lazy"
+            width="200"
+            height="128"
           />
           <p class="text-brand-brown flex-1">
             Los árboles atraviesan varias etapas de crecimiento. En su juventud, priorizan el desarrollo en altura y radicular. Con el tiempo, establecen su estructura definitiva y, al madurar, se centran en mantenerla. Su sistema radicular incluye raíces gruesas para sujeción y finas para absorción de nutrientes.
@@ -48,17 +164,17 @@ import Layout from '../layouts/Layout.astro';
         <h2 class="text-2xl font-light text-brand-green mb-8">Tipos de poda en arboricultura</h2>
         <div class="grid md:grid-cols-2 gap-10">
           <div class="flex flex-col">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-brand-brown mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-brand-brown mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
             </svg>
-            <h3 class="text-xl font-medium text-brand-brown mb-3">Podas de Formación para Árboles Jóvenes</h3>
+            <h3 class="text-xl font-medium text-brand-brown mb-3">Podas de formación para árboles jóvenes</h3>
             <p class="text-brand-brown">Estas intervenciones establecen la estructura básica del árbol, evitando futuras complicaciones. Se mantiene un tallo dominante y se eliminan ramas secundarias que compitan con él o estén dañadas.</p>
           </div>
           <div class="flex flex-col">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-brand-brown mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-brand-brown mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
             </svg>
-            <h3 class="text-xl font-medium text-brand-brown mb-3">Podas de Mantenimiento para Árboles Adultos</h3>
+            <h3 class="text-xl font-medium text-brand-brown mb-3">Podas de mantenimiento para árboles adultos</h3>
             <p class="text-brand-brown">Estas intervenciones conservan la forma establecida, eliminando ramas secas o que impliquen un riesgo. Pueden ser minimalistas, respetando la forma natural, o más intensivas si se mantienen formas artificiales.</p>
           </div>
         </div>
@@ -67,10 +183,13 @@ import Layout from '../layouts/Layout.astro';
       <section class="bg-white p-10 rounded-lg shadow-soft mb-16">
         <h2 class="text-2xl font-light text-brand-green mb-6">Planificación y mantenimiento del arbolado urbano</h2>
         <div class="flex flex-col md:flex-row items-start md:items-center gap-8">
-          <img 
-            src="/images/arboricultura-4.JPG?auto=format&fit=crop&w=200&q=80"
+          <img
+            src="/images/arboricultura-4.JPG"
             alt="Mantenimiento de árboles"
             class="w-full md:w-1/4 h-48 md:h-32 object-cover rounded-lg"
+            loading="lazy"
+            width="200"
+            height="128"
           />
           <p class="text-brand-brown flex-1">
             La planificación adecuada implica seleccionar especies apropiadas para cada entorno urbano, considerando factores como el espacio disponible y las necesidades específicas de cada especie. El mantenimiento incluye riego, fertilización y tutoreo inicial, asegurando el desarrollo saludable del árbol y su contribución a la calidad ambiental urbana.
@@ -78,11 +197,11 @@ import Layout from '../layouts/Layout.astro';
         </div>
       </section>
 
-      <section class="bg-white p-10 rounded-lg shadow-soft">
+      <section class="bg-white p-10 rounded-lg shadow-soft mb-16">
         <h2 class="text-2xl font-light text-brand-green mb-12 text-center">Nuestros servicios</h2>
         <div class="grid md:grid-cols-2 gap-10">
           <div class="flex">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-brand-brown mr-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-brand-brown mr-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758a3 3 0 10-4.243-4.243 3 3 0 004.243 4.243zm8.486-8.486a3 3 0 10-4.243-4.243 3 3 0 004.243 4.243z" />
             </svg>
             <div>
@@ -92,7 +211,7 @@ import Layout from '../layouts/Layout.astro';
           </div>
 
           <div class="flex">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-brand-brown mr-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-brand-brown mr-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             <div>
@@ -102,7 +221,7 @@ import Layout from '../layouts/Layout.astro';
           </div>
 
           <div class="flex">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-brand-brown mr-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-brand-brown mr-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
             </svg>
             <div>
@@ -112,7 +231,7 @@ import Layout from '../layouts/Layout.astro';
           </div>
 
           <div class="flex">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-brand-brown mr-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-brand-brown mr-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
             </svg>
             <div>
@@ -121,6 +240,42 @@ import Layout from '../layouts/Layout.astro';
             </div>
           </div>
         </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="bg-white p-10 rounded-lg shadow-soft mb-16" aria-labelledby="faq-heading">
+        <h2 id="faq-heading" class="text-2xl font-light text-brand-green mb-8 text-center">Preguntas frecuentes</h2>
+        <div class="space-y-6">
+          {faqs.map((faq) => (
+            <details class="group bg-soft-cream rounded-lg p-6">
+              <summary class="flex items-center justify-between cursor-pointer font-medium text-brand-brown list-none">
+                <span>{faq.question}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-green flex-shrink-0 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <p class="text-brand-brown mt-4">{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="text-center">
+        <p class="text-xl text-brand-brown mb-8">
+          ¿Necesitas apoyo con el arbolado de tu propiedad en Cuernavaca, Morelos o Atlixco, Puebla?
+        </p>
+        <a
+          href="https://wa.me/+527774705502?text=Hola%2C%20me%20interesa%20el%20servicio%20de%20arboricultura"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center bg-brand-green text-white px-8 py-4 rounded-lg hover:bg-light-sage transition-colors"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+          </svg>
+          Solicitar información por WhatsApp
+        </a>
       </section>
     </div>
   </div>

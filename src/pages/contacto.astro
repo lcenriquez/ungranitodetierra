@@ -1,12 +1,19 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
 ---
 
-<Layout title="Contacto">
+<Layout
+  title="Contacto"
+  description="Contáctanos por WhatsApp para consultas sobre arboricultura, huertos, ecotecnias y proyectos sostenibles en Cuernavaca, Morelos y Atlixco, Puebla."
+>
   <div class="container mx-auto px-4 py-16">
-    <div class="max-w-2xl mx-auto bg-white p-10 rounded-lg shadow-soft">
+    <div class="max-w-2xl mx-auto">
+      <Breadcrumbs items={[{ name: 'Inicio', href: '/' }, { name: 'Contacto' }]} />
+    </div>
+    <div class="max-w-2xl mx-auto bg-white p-10 rounded-lg shadow-soft mt-8">
       <h1 class="text-3xl font-light text-brand-green mb-4 text-center">Contáctanos</h1>
-      <p class="text-center text-brand-brown mb-12">Escríbenos si tienes alguna consulta, quieres proponer alguna iniciativa o te interesa conocer algún proyecto cerca de ti.</p>
+      <p class="text-center text-brand-brown mb-12">Escríbenos si tienes alguna consulta, quieres proponer alguna iniciativa o te interesa conocer algún proyecto cerca de ti en Morelos o Puebla.</p>
 
       <div class="space-y-12">
         <div class="flex items-start hidden">
